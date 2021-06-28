@@ -4,8 +4,28 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 
-class App extends Component {
 
+
+
+
+
+
+
+
+// Next
+// 10. Using useEffect() in Functional Components
+
+
+
+
+
+
+
+
+
+
+
+class App extends Component {
   constructor(props){
     super(props);
     console.log('[App.js] constructor')
@@ -13,17 +33,35 @@ class App extends Component {
   }
   state = {
     persons: [
-      { id: "asfa1", name: "Max", age: 28 },
+      { id: "assdsssfa1", name: "Maxs", age: 28 },
       { id: "vasdf1", name: "Manu", age: 29 },
       { id: "asdf11", name: "Stephanie", age: 26 },
     ],
     otherState: "some other value",
     showPersons: false,
   };
-
   static getDerivedSteteFromProps(props,state){
     console.log('[App.js] getDerivedStateFromProps', props)
     return state;
+  }
+// componentWillMount(){
+// 	console.log('[App.js] componentWillMount');
+// }
+
+  componentDidMount(){
+	  console.log('[App.js] this.componentDidMount');
+
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+	console.log('[App.js] this.shouldComponentUpdate');
+return true;
+}
+
+  
+
+  componentDidUpdate(){
+	  console.log('[App.js] componentDidUpdate')
   }
 
   nameChangedHandler = (event, id) => {
@@ -34,19 +72,13 @@ class App extends Component {
     const person = {
       ...this.state.persons[personIndex],
     };
-
-    // const person = Object.assign({}, this.state.persons[personIndex]);
-
     person.name = event.target.value;
-
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-
     this.setState({ persons: persons });
   };
 
   deletePersonHandler = (personIndex) => {
-    // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
@@ -63,12 +95,14 @@ class App extends Component {
    
 
     if (this.state.showPersons) {
-      persons = 
-       
-          <Persons 
+      persons = (
+
+		  
+		  <Persons 
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
-          changed={this.nameChangedHandler} />;
+          changed={this.nameChangedHandler} />
+		  );
     }
 
  
