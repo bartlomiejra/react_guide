@@ -10,7 +10,7 @@
   .Cockpit button {
     border: 1px solid blue;
     padding: 16px;
-    background-color: green;
+    background-color: rgb(40, 53, 40);
     font: inherit;
     color: white;
     cursor: pointer;
