@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
 
-import Person from './Person/Person';
+import Person from "./Person/Person";
 
 class Persons extends PureComponent {
   // static getDerivedStateFromProps(props, state) {
@@ -27,8 +27,8 @@ class Persons extends PureComponent {
   // }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log('[Persons.js] getSnapshotBeforeUpdate');
-    return { message: 'Snapshot!' };
+    console.log("[Persons.js] getSnapshotBeforeUpdate");
+    return { message: "Snapshot!" };
   }
 
   // componentWillUpdate() {
@@ -36,16 +36,16 @@ class Persons extends PureComponent {
   // }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('[Persons.js] componentDidUpdate');
+    console.log("[Persons.js] componentDidUpdate");
     console.log(snapshot);
   }
 
   componentWillUnmount() {
-    console.log('[Persons.js] componentWillUnmount');
+    console.log("[Persons.js] componentW￼illUnmount");
   }
 
   render() {
-    console.log('[Persons.js] rendering...');
+    console.log("[Persons.js] rendering...");
     return this.props.persons.map((person, index) => {
       return (
         <Person
@@ -53,7 +53,8 @@ class Persons extends PureComponent {
           name={person.name}
           age={person.age}
           key={person.id}
-          changed={event => this.props.changed(event, person.id)}
+          changed={(event) => this.props.changed(event, person.id)}
+          isAuth={this.props.isAuthenticated}
         />
       );
     });
